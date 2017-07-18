@@ -8,15 +8,7 @@ const bdateObject = new Date(year,month-1,day)
 
 const settings = require("./settings");
 
-const knex = require('knex')({
-  client: 'pg',
-  connection: {
-    host:     settings.hostname,
-    user:     settings.user,
-    password: settings.password,
-    database: settings.database
-  }
-})
+const knex = require('knex')(require('./knexfile')['development'])
 
 knex('famous_people')
 .insert({first_name: fname, last_name: lname, birthdate: bdateObject})

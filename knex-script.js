@@ -27,6 +27,7 @@ function output(rows) {
 
 knex('famous_people')
 .where('last_name', arg)
+.orWhere('first_name', arg)
 .select()
 .asCallback( (err, rows) => {
   if (err) {
