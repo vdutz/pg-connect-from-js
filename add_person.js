@@ -6,7 +6,7 @@ const month = bdateString.slice(5,7)
 const day = bdateString.slice(8,10)
 const bdateObject = new Date(year,month-1,day)
 
-const settings = require("./settings"); // settings.json
+const settings = require("./settings");
 
 const knex = require('knex')({
   client: 'pg',
@@ -14,9 +14,7 @@ const knex = require('knex')({
     host:     settings.hostname,
     user:     settings.user,
     password: settings.password,
-    // port:     settings.port,
     database: settings.database
-    // ssl:      settings.ssl
   }
 })
 
@@ -27,7 +25,6 @@ knex('famous_people')
     return console.error(err);
   }
   console.log("Searching... ")
-  // console.log(rows)
 })
 
 knex.destroy(() => {
